@@ -11,6 +11,7 @@ public class AfishaManager {
         int length = items.length + 1;
         Afisha[] tmp = new Afisha[length];
 
+
         System.arraycopy(items, 0, tmp, 0, items.length);
         // кладём последним наш элемент
         int lastIndex = tmp.length - 1;

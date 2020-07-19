@@ -42,7 +42,7 @@ class AfishaRepositoryTest {
 
         repository.findAll();
         Afisha[] expected = new Afisha[]{fifth, fourth, third, second, first};
-        Afisha[] actual = manager.getAll();
+//        Afisha[] actual = repository.findAll();
 //        verify(repository).findAll();
     }
 
@@ -55,7 +55,7 @@ class AfishaRepositoryTest {
 
         repository.findById(0);
         Afisha[] expected = new Afisha[]{first};
-        Afisha[] actual = manager.getAll();
+        Afisha[] actual = repository.findAll();
         verify(repository).findAll();
     }
 
@@ -68,7 +68,7 @@ class AfishaRepositoryTest {
 
         repository.save(first);
         Afisha[] expected = new Afisha[]{first};
-        Afisha[] actual = manager.getAll();
+        Afisha[] actual = repository.findAll();
         verify(repository).findAll();
     }
 
@@ -81,7 +81,7 @@ class AfishaRepositoryTest {
 
         repository.removeById(0);
         Afisha[] expected = new Afisha[]{first};
-        Afisha[] actual = manager.getAll();
+        Afisha[] actual = repository.findAll();
         verify(repository).findAll();
     }
 
@@ -94,7 +94,7 @@ class AfishaRepositoryTest {
 
         repository.removeAll();
         Afisha[] expected = new Afisha[]{};
-        Afisha[] actual = manager.getAll();
+        Afisha[] actual = repository.findAll();
         verify(repository).findAll();
     }
 }

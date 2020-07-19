@@ -36,7 +36,7 @@ public class AfishaManager10PosterTest {
     }
 
     @Test
-    public void shouldShowFivePosters() {
+    public void shouldShowTenPosters() {
         Afisha[] actual = manager.getAll();
         Afisha[] expected = new Afisha[]{tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second, first};
 

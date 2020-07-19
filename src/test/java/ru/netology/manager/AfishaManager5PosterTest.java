@@ -9,8 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class AfishaManager5PosterTest {
 
-    private final AfishaManager manager = new AfishaManager(5);
-    private final Afisha first = new Afisha(1, 1, "first", "link1", "genre1");
+    private AfishaManager manager = new AfishaManager(5);
+    private Afisha first = new Afisha(1, 1, "first", "link1", "genre1");
     private Afisha second = new Afisha(2, 2, "second", "link2", "genre2");
     private Afisha third = new Afisha(3, 3, "third", "link3", "genre3");
     private Afisha fourth = new Afisha(4, 4, "fourth", "link4", "genre4");

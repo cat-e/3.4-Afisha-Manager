@@ -6,25 +6,26 @@ public class AfishaRepository {
     private Afisha[] items = new Afisha[0];
     int amountFilmsMax;
 
+    public AfishaRepository(int amountFilmsMax) {
+        this.amountFilmsMax = amountFilmsMax;
+    }
+
     public Afisha[] findAll() {
         return items;
     }
 
     public Afisha[] findById(int id) {
-        Afisha[] tmp = new Afisha[amountFilmsMax];
-        int index = 0;
         for (Afisha item : items) {
-            Afisha[] result = new Afisha[0];
             if (item.getId() == id) {
-                result[index] = item;
-                index++;
+                return items;
             }
-            items = result;
         }
+        return null;
+    }
 
     public void save(Afisha item) {
         int length = items.length + 1;
-        Afisha[] tmp1 = new Afisha[length];
+        Afisha[] tmp = new Afisha[length];
         System.arraycopy(items, 0, tmp, 0, items.length);
         int lastIndex = tmp.length - 1;
         tmp[lastIndex] = item;

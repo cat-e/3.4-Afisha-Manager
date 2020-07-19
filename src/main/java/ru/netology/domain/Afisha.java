@@ -13,4 +13,5 @@ public class Afisha {
     private String productName;
     private String posterURL;
     private String genre;
+
 }

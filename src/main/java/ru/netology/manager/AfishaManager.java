@@ -4,7 +4,7 @@ import ru.netology.domain.Afisha;
 import ru.netology.repository.AfishaRepository;
 
 public class AfishaManager {
-    int amountFilmsMax;
+    int amountFilmsMax = 5;
     private AfishaRepository repository;
 
     public AfishaManager(AfishaRepository repository) {
@@ -26,14 +26,6 @@ public class AfishaManager {
             result[i] = items[index];
         }
         return result;
-    }
-
-    public void removeById(int id) {
-        repository.removeById(id);
-    }
-
-    public void removeAll() {
-        repository.removeAll();
     }
 
     public AfishaManager(int amountFilmsMax) {

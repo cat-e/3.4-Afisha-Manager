@@ -20,11 +20,11 @@ public class AfishaManager {
     }
 
     public Afisha[] getAll() {
-        Afisha[] result = new Afisha[items.length];
+        Afisha[] result = new Afisha[amountFilmsMax];
         // перебираем массив в прямом порядке
         // но кладём в результаты в обратном
         for (int i = 0; i < result.length; i++) {
-            int index = items.length - i - 1;
+            int index = amountFilmsMax - i - 1;
             result[i] = items[index];
         }
         return result;

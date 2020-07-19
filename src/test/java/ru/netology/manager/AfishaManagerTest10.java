@@ -8,7 +8,7 @@ import ru.netology.manager.AfishaManager;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-public class AfishaManagerTest {
+public class AfishaManagerTest10 {
     private AfishaManager manager = new AfishaManager(10);
     private Afisha first = new Afisha(1, 1, "first", "link", "genre");
     private Afisha second = new Afisha(2, 2, "second", "link", "genre");

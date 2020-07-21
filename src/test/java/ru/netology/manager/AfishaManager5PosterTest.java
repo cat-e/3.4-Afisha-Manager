@@ -2,13 +2,20 @@ package ru.netology.manager;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import ru.netology.domain.Afisha;
+import ru.netology.repository.AfishaRepository;
 
+import static org.mockito.Mockito.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+@ExtendWith(MockitoExtension.class)
 public class AfishaManager5PosterTest {
-
+    @Mock
+    private AfishaRepository repository;
+    @InjectMocks
     private AfishaManager manager = new AfishaManager(5);
     private Afisha first = new Afisha(1, 1, "first", "link1", "genre1");
     private Afisha second = new Afisha(2, 2, "second", "link2", "genre2");
@@ -23,25 +30,29 @@ public class AfishaManager5PosterTest {
 
     @BeforeEach
     public void setUp() {
-        manager.add(first);
-        manager.add(second);
-        manager.add(third);
-        manager.add(fourth);
-        manager.add(fifth);
-        manager.add(sixth);
-        manager.add(seventh);
-        manager.add(eighth);
-        manager.add(ninth);
-        manager.add(tenth);
+        repository.save(first);
+        repository.save(second);
+        repository.save(third);
+        repository.save(fourth);
+        repository.save(fifth);
+        repository.save(sixth);
+        repository.save(seventh);
+        repository.save(eighth);
+        repository.save(ninth);
+        repository.save(tenth);
     }
 
-//    @Test
-    public void shouldShowFivePosters() {
-        Afisha[] actual = manager.getAll();
+    @Test
+    public void shouldShowAllItems() {
+        repository.findAll();
+        Afisha[] returned = new Afisha[]{first, second, third, fourth, fifth};
+        doReturn(returned).when(repository).findAll();
+        doNothing().when(repository).findAll();
+
+        repository.findAll();
         Afisha[] expected = new Afisha[]{fifth, fourth, third, second, first};
-
-        assertArrayEquals(expected, actual);
+        Afisha[] actual = repository.findAll();
+        verify(repository).findAll();
     }
-
 
 }

@@ -2,27 +2,22 @@ package ru.netology.repository;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import ru.netology.domain.Afisha;
-import ru.netology.manager.AfishaManager;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
-@ExtendWith(MockitoExtension.class)
 class AfishaRepositoryTest {
-    @Mock
-    private AfishaRepository repository;
-    @InjectMocks
-    private AfishaManager manager;
+    private AfishaRepository repository = new AfishaRepository(5);
     private Afisha first = new Afisha(1, 1, "first", "link1", "genre1");
     private Afisha second = new Afisha(2, 2, "second", "link2", "genre2");
     private Afisha third = new Afisha(3, 3, "third", "link3", "genre3");
     private Afisha fourth = new Afisha(4, 4, "fourth", "link4", "genre4");
     private Afisha fifth = new Afisha(5, 5, "fifth", "link5", "genre5");
+    private Afisha sixth = new Afisha(6, 6, "sixth", "link6", "genre6");
+    private Afisha seventh = new Afisha(7, 7, "seventh", "link7", "genre7");
+    private Afisha eighth = new Afisha(8, 8, "eighth", "link8", "genre8");
+    private Afisha ninth = new Afisha(9, 9, "ninth", "link9", "genre9");
+    private Afisha tenth = new Afisha(10, 10, "tenth", "link10", "genre10");
 
     @BeforeEach
     public void setUp() {
@@ -31,70 +26,47 @@ class AfishaRepositoryTest {
         repository.save(third);
         repository.save(fourth);
         repository.save(fifth);
+        repository.save(sixth);
+        repository.save(seventh);
+        repository.save(eighth);
+        repository.save(ninth);
+        repository.save(tenth);
     }
 
     @Test
-    public void shouldShowAllItems() {
-//        repository.findAll();
-        Afisha[] returned = new Afisha[]{first, second, third, fourth, fifth};
-        doReturn(returned).when(repository).findAll();
-//        doNothing().when(repository).findAll();
-
-        repository.findAll();
+    public void shouldShowFivePosters() {
+        Afisha[] actual = repository.findAll();
         Afisha[] expected = new Afisha[]{fifth, fourth, third, second, first};
-//        Afisha[] actual = repository.findAll();
-//        verify(repository).findAll();
+
+        assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void findById() {
-        repository.findById(0);
-        Afisha[] returned = new Afisha[]{first};
-        doReturn(returned).when(repository).findAll();
-//        doNothing().when(repository).findAll();
-
-        repository.findById(0);
+    public void shouldFindById() {
+        int idToFind = 1;
+        repository.findById(idToFind);
+        Afisha[] actual = repository.findById(idToFind);
         Afisha[] expected = new Afisha[]{first};
-        Afisha[] actual = repository.findAll();
-        verify(repository).findAll();
+
+        assertArrayEquals(expected, actual);
     }
 
     @Test
-    void save() {
-        repository.save(first);
-        Afisha[] returned = new Afisha[]{first};
-        doReturn(returned).when(repository).findAll();
-//        doNothing().when(repository).findAll();
-
-        repository.save(first);
-        Afisha[] expected = new Afisha[]{first};
+    void shouldRemoveByIdIfExists() {
+        int idToRemove = 1;
+        repository.removeById(idToRemove);
         Afisha[] actual = repository.findAll();
-        verify(repository).findAll();
+        Afisha[] expected = new Afisha[]{fifth, fourth, third, second};
+
+        assertArrayEquals(expected, actual);
     }
 
     @Test
-    void removeById() {
-        repository.removeById(0);
-        Afisha[] returned = new Afisha[]{first};
-        doReturn(returned).when(repository).findAll();
-//        doNothing().when(repository).findAll();
-
-        repository.removeById(0);
-        Afisha[] expected = new Afisha[]{first};
-        Afisha[] actual = repository.findAll();
-        verify(repository).findAll();
-    }
-
-    @Test
-    void removeAll() {
+    void shouldRemoveAll() {
         repository.removeAll();
-        Afisha[] returned = new Afisha[]{};
-        doReturn(returned).when(repository).findAll();
-//        doNothing().when(repository).findAll();
-
-        repository.removeAll();
+        Afisha[] actual = repository.removeAll();
         Afisha[] expected = new Afisha[]{};
-        Afisha[] actual = repository.findAll();
-        verify(repository).findAll();
+
+        assertArrayEquals(expected, actual);
     }
 }

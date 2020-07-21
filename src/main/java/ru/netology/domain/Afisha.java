@@ -14,4 +14,7 @@ public class Afisha {
     private String posterURL;
     private String genre;
 
+    public int getId() {
+        return id;
+    }
 }

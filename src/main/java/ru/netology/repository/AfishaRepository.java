@@ -3,36 +3,51 @@ package ru.netology.repository;
 import ru.netology.domain.Afisha;
 
 public class AfishaRepository {
+    int amountFilmsMax = 10;
     private Afisha[] items = new Afisha[0];
-    int amountFilmsMax;
 
     public AfishaRepository(int amountFilmsMax) {
         this.amountFilmsMax = amountFilmsMax;
+
     }
 
     public Afisha[] findAll() {
-        return items;
+        int filmsToShow;
+        if (amountFilmsMax >= items.length) {
+            filmsToShow = items.length;
+        }
+        filmsToShow = amountFilmsMax;
+        Afisha[] result = new Afisha[filmsToShow];
+        for (int i = 0; i < result.length; i++) {
+            int index = filmsToShow - i - 1;
+            result[i] = items[index];
+        }
+        return result;
     }
 
     public Afisha[] findById(int id) {
+        Afisha[] tmp = new Afisha[items.length];
+        int index = 0;
         for (Afisha item : items) {
             if (item.getId() == id) {
-                return items;
+                tmp[index] = item;
             }
+            return null;
         }
-        return null;
+        return tmp;
     }
 
-    public void save(Afisha item) {
+    public Afisha[] save(Afisha item) {
         int length = items.length + 1;
         Afisha[] tmp = new Afisha[length];
         System.arraycopy(items, 0, tmp, 0, items.length);
         int lastIndex = tmp.length - 1;
         tmp[lastIndex] = item;
         items = tmp;
+        return items;
     }
 
-    public void removeById(int id) {
+    public Afisha[] removeById(int id) {
         int length = items.length - 1;
         Afisha[] tmp = new Afisha[length];
         int idx = 0;
@@ -42,6 +57,8 @@ public class AfishaRepository {
                 idx++;
             }
         }
+        items = tmp;
+        return items;
     }
 
     public Afisha[] removeAll() {

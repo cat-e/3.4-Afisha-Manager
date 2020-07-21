@@ -7,13 +7,11 @@ public class AfishaManager {
     int amountFilmsMax = 10;
     private AfishaRepository repository;
 
-    public AfishaManager(AfishaRepository repository) {
-        this.repository = repository;
-    }
 
-    public void add(Afisha item) {
-        repository.save(item);
-    }
+//
+//    public void add(Afisha item) {
+//        repository.save(item);
+//    }
 
     public Afisha[] getAll() {
         Afisha[] items = repository.findAll();

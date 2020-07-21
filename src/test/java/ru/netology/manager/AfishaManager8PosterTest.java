@@ -1,5 +1,6 @@
 package ru.netology.manager;
 
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,11 +14,11 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class AfishaManager5PosterTest {
+public class AfishaManager8PosterTest {
     @Mock
     private AfishaRepository repository;
     @InjectMocks
-    private AfishaManager manager = new AfishaManager(5);
+    private AfishaManager manager = new AfishaManager(8);
     private Afisha first = new Afisha(1, 1, "first", "link1", "genre1");
     private Afisha second = new Afisha(2, 2, "second", "link2", "genre2");
     private Afisha third = new Afisha(3, 3, "third", "link3", "genre3");
@@ -27,7 +28,7 @@ public class AfishaManager5PosterTest {
     private Afisha seventh = new Afisha(7, 7, "seventh", "link7", "genre7");
     private Afisha eighth = new Afisha(8, 8, "eighth", "link8", "genre8");
     private Afisha ninth = new Afisha(9, 9, "ninth", "link9", "genre9");
-    private Afisha tenth = new Afisha(10, 10, "tenth", "link10", "genre10");
+
 
     @BeforeEach
     public void setUp() {
@@ -40,19 +41,19 @@ public class AfishaManager5PosterTest {
         repository.save(seventh);
         repository.save(eighth);
         repository.save(ninth);
-        repository.save(tenth);
+
     }
 
     @Test
-    public void shouldShowAllItems() {
+    public void shouldShow8Posters() {
         repository.findAll();
-        Afisha[] returned = new Afisha[]{first, second, third, fourth, fifth};
+        Afisha[] returned = new Afisha[]{first, second, third, fourth, fifth, sixth, seventh, eighth};
         doReturn(returned).when(repository).findAll();
 
-        Afisha[] expected = new Afisha[]{fifth, fourth, third, second, first};
         Afisha[] actual = manager.getAll();
-        assertArrayEquals(expected, actual);
+        Afisha[] expected = new Afisha[]{eighth, seventh, sixth, fifth, fourth, third, second, first};
 
+        assertArrayEquals(expected, actual);
     }
 
 

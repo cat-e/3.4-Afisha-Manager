@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
+
 @AllArgsConstructor
 @Data
 public class Afisha {
@@ -13,6 +13,8 @@ public class Afisha {
     private String productName;
     private String posterURL;
     private String genre;
+
+
 
     public int getId() {
         return id;

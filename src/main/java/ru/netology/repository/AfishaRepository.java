@@ -25,17 +25,16 @@ public class AfishaRepository {
         return result;
     }
 
-    public Afisha[] findById(int id) {
-        Afisha[] tmp = new Afisha[items.length];
-        int index = 0;
+    public Afisha findById(int id) {
+        Afisha poster = null;
         for (Afisha item : items) {
             if (item.getId() == id) {
-                tmp[index] = item;
+                poster = item;
             }
-            return null;
         }
-        return tmp;
+        return poster;
     }
+
 
     public Afisha[] save(Afisha item) {
         int length = items.length + 1;
